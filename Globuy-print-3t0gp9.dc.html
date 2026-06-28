@@ -1,0 +1,798 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<style data-omelette-print-defaults>
+@media print {
+  @page { margin: 0.5in; }
+  h1, h2, h3, h4, h5, h6 { break-after: avoid; }
+  figure, table, pre, blockquote, img, svg, tr, [class~="card" i] { break-inside: avoid; }
+  img, svg { max-width: 100%; }
+  p { orphans: 3; widows: 3; }
+}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: #04040d;
+      background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1' cy='1' r='0.8' fill='rgba(255,255,255,0.035)'/%3E%3C/svg%3E");
+      color: #ffffff;
+      font-family: 'Inter', system-ui, sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection { background: rgba(124,58,237,0.45); }
+    a { text-decoration: none; color: inherit; }
+    @keyframes slotIn {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes floatUp {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-7px); }
+    }
+    @keyframes dotPulse {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50%       { opacity: 1; transform: scale(1.25); }
+    }
+    @keyframes shimmer {
+      0%   { background-position: -400px 0; }
+      100% { background-position: 400px 0; }
+    }
+  </style>
+</helmet>
+
+<!-- Ambient background mesh -->
+<div style="position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden">
+  <div style="position:absolute;width:960px;height:960px;top:-320px;left:-220px;background:radial-gradient(circle at center,rgba(109,40,217,0.2) 0%,transparent 62%);border-radius:50%"></div>
+  <div style="position:absolute;width:720px;height:720px;top:8%;right:-160px;background:radial-gradient(circle at center,rgba(37,99,235,0.15) 0%,transparent 62%);border-radius:50%"></div>
+  <div style="position:absolute;width:640px;height:640px;bottom:-80px;left:38%;background:radial-gradient(circle at center,rgba(139,92,246,0.13) 0%,transparent 62%);border-radius:50%"></div>
+</div>
+
+<!-- Page wrapper -->
+<div style="position:relative;z-index:1">
+
+  <!-- ══════════ NAVBAR ══════════ -->
+  <nav style="position:sticky;top:0;z-index:100;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);background:rgba(4,4,13,0.72);border-bottom:1px solid rgba(255,255,255,0.055)">
+    <div style="max-width:1280px;margin:0 auto;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between">
+
+      <div style="display:flex;align-items:center;gap:10px">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+          <polygon points="13,1.5 24.5,7.5 24.5,18.5 13,24.5 1.5,18.5 1.5,7.5" fill="none" stroke="url(#ng)" stroke-width="1.4"/>
+          <text x="13" y="16.5" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" font-weight="800" fill="url(#ng)">GB<text>
+          <defs>
+            <linearGradient id="ng" x1="1.5" y1="1.5" x2="24.5" y2="24.5" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#c4b5fd"/>
+              <stop offset="100%" stop-color="#67e8f9"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span style="font-weight:700;font-size:16px;letter-spacing:-0.4px">Globuy</span>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:28px">
+        <a href="#features" style="font-size:14px;font-weight:500;color:rgba(255,255,255,0.5);transition:color 0.2s" style-hover="color:rgba(255,255,255,0.85)">Features</a>
+        <a href="#privacy" style="font-size:14px;font-weight:500;color:rgba(255,255,255,0.5);transition:color 0.2s" style-hover="color:rgba(255,255,255,0.85)">Privacy</a>
+        <a href="#" style="display:inline-flex;align-items:center;gap:8px;padding:9px 20px;border-radius:999px;background:linear-gradient(135deg,#7c3aed,#2563eb);font-size:13px;font-weight:600;letter-spacing:0.1px;transition:all 0.25s" style-hover="opacity:0.88;transform:translateY(-1px)">
+          <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M7 1.5C4 1.5 1.5 4 1.5 7S4 12.5 7 12.5 12.5 10 12.5 7 10 1.5 7 1.5z" stroke="rgba(255,255,255,0.7)" stroke-width="1.1"/><path d="M5 7h4M7 5v4" stroke="rgba(255,255,255,0.7)" stroke-width="1.2" stroke-linecap="round"/></svg>
+          Add to Chrome
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══════════ HERO ══════════ -->
+  <section style="max-width:1280px;margin:0 auto;padding:108px 32px 96px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center">
+
+    <!-- Left: copy -->
+    <div style="display:flex;flex-direction:column">
+
+      <!-- Badge -->
+      <div style="display:inline-flex;align-items:center;gap:8px;padding:5px 14px;border-radius:999px;border:1px solid rgba(167,139,250,0.28);background:rgba(167,139,250,0.07);width:fit-content;margin-bottom:36px">
+        <span style="display:block;width:6px;height:6px;border-radius:50%;background:#a78bfa;animation:dotPulse 2.2s ease-in-out infinite"></span>
+        <span style="font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#c4b5fd">Free Chrome Extension</span>
+      </div>
+
+      <!-- Headline -->
+      <div style="font-size:76px;font-weight:900;line-height:1.0;letter-spacing:-3px;margin-bottom:0">
+        The whole page.
+      </div>
+      <div style="font-size:76px;font-weight:900;line-height:1.0;letter-spacing:-3px;margin-bottom:36px;min-height:84px">
+        {{ currencyRotator }}
+      </div>
+
+      <!-- Subtext -->
+      <p style="font-size:17px;line-height:1.75;color:rgba(255,255,255,0.52);max-width:488px;margin-bottom:48px;font-weight:400">
+        Generic translators skip half the page. Globuy catches everything—product names, condition grades, seller notes across Korean, Japanese, Chinese, and Vietnamese resale sites.
+      </p>
+
+      <!-- CTA cluster -->
+      <div style="display:flex;flex-direction:column;gap:14px;align-items:flex-start">
+        <a href="#" style="display:inline-flex;align-items:center;gap:12px;padding:17px 40px;border-radius:999px;background:linear-gradient(135deg,#7c3aed,#2563eb);font-size:16px;font-weight:700;color:#fff;letter-spacing:-0.1px;box-shadow:0 0 48px rgba(124,58,237,0.5),0 0 96px rgba(124,58,237,0.22);transition:all 0.3s ease" style-hover="transform:translateY(-3px);box-shadow:0 0 64px rgba(124,58,237,0.65),0 0 120px rgba(124,58,237,0.3)">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8.5" stroke="rgba(255,255,255,0.55)" stroke-width="1.3"/><path d="M6.5 10h7M10 6.5v7" stroke="rgba(255,255,255,0.75)" stroke-width="1.6" stroke-linecap="round"/></svg>
+          Add to Chrome — Free
+        </a>
+        <span style="font-size:12px;color:rgba(255,255,255,0.25);letter-spacing:0.6px">On-device&nbsp;&nbsp;·&nbsp;&nbsp;No tracking&nbsp;&nbsp;·&nbsp;&nbsp;Free forever</span>
+      </div>
+    </div>
+
+    <!-- Right: browser mockup -->
+    <div style="display:flex;justify-content:center;align-items:center;animation:floatUp 4.5s ease-in-out infinite">
+      <div style="width:100%;max-width:540px;border-radius:14px;border:1px solid rgba(255,255,255,0.09);background:rgba(255,255,255,0.025);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,0.55),inset 0 1px 0 rgba(255,255,255,0.07)">
+
+        <!-- Title bar -->
+        <div style="padding:13px 16px;background:rgba(255,255,255,0.035);border-bottom:1px solid rgba(255,255,255,0.065);display:flex;align-items:center;gap:10px">
+          <div style="display:flex;gap:7px">
+            <div style="width:11px;height:11px;border-radius:50%;background:#ff5f57;box-shadow:0 0 6px rgba(255,95,87,0.5)"></div>
+            <div style="width:11px;height:11px;border-radius:50%;background:#febc2e;box-shadow:0 0 6px rgba(254,188,46,0.4)"></div>
+            <div style="width:11px;height:11px;border-radius:50%;background:#28c840;box-shadow:0 0 6px rgba(40,200,64,0.4)"></div>
+          </div>
+          <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:5px;padding:5px 11px;font-size:11px;color:rgba(255,255,255,0.3);display:flex;align-items:center;gap:5px;border:1px solid rgba(255,255,255,0.05)">
+            <svg width="9" height="9" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="rgba(255,255,255,0.35)" stroke-width="0.8"/><path d="M5 1.5C3.8 2.5 3 3.7 3 5s.8 2.5 2 3.5M5 1.5c1.2 1 2 2.2 2 3.5s-.8 2.5-2 3.5M1.5 5h7" stroke="rgba(255,255,255,0.35)" stroke-width="0.8"/></svg>
+            jp.mercari.com/item/m12348906
+          </div>
+        </div>
+
+        <!-- Content area -->
+        <div style="padding:28px 28px 32px;min-height:270px;display:flex;align-items:center;justify-content:center">
+          <div style="width:100%;border:1.5px dashed rgba(255,255,255,0.1);border-radius:10px;padding:40px 24px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+            <svg width="44" height="44" viewBox="0 0 44 44" fill="none" style="opacity:0.22">
+              <rect x="3" y="3" width="38" height="38" rx="5" stroke="white" stroke-width="1.6"/>
+              <path d="M3 14h38M16 14v27" stroke="white" stroke-width="1.6"/>
+              <rect x="20" y="19" width="16" height="11" rx="2.5" stroke="white" stroke-width="1.3"/>
+              <path d="M8 20h5M8 25h5M8 30h5M8 35h5" stroke="white" stroke-width="1.3" stroke-linecap="round"/>
+            </svg>
+            <span style="font-size:13px;font-weight:500;color:rgba(255,255,255,0.28)">Hero Product GIF: Fast Translation Demo</span>
+            <span style="font-size:11px;color:rgba(255,255,255,0.14)">1080 × 680 · 60fps</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ DEMO: BEFORE / AFTER ══════════ -->
+  <section style="padding:112px 32px">
+    <div style="max-width:1280px;margin:0 auto">
+
+      <div style="text-align:center;margin-bottom:64px">
+        <p style="font-size:11px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase;color:#7c3aed;margin-bottom:16px">Interactive Demo</p>
+        <h2 style="font-size:52px;font-weight:900;letter-spacing:-1.8px;line-height:1.05">See the Difference.</h2>
+        <p style="margin-top:14px;font-size:15px;color:rgba(255,255,255,0.38)">Drag the handle to compare</p>
+      </div>
+
+      <!-- Slider container -->
+      <div id="bfslider"
+        style="position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.075);background:rgba(255,255,255,0.015);height:420px;user-select:none;cursor:ew-resize;box-shadow:0 32px 80px rgba(0,0,0,0.45)"
+        onMouseDown="{{ startDrag }}"
+        onTouchStart="{{ startDragTouch }}">
+
+        <!-- BEFORE panel -->
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;background:rgba(14,8,8,0.96)">
+          <div style="padding:10px 20px;background:rgba(239,68,68,0.07);border-bottom:1px solid rgba(239,68,68,0.12);display:flex;align-items:center;gap:8px">
+            <span style="display:block;width:6px;height:6px;border-radius:50%;background:#ef4444"></span>
+            <span style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(239,68,68,0.75)">Generic Translation</span>
+          </div>
+          <div style="flex:1;padding:28px 36px;display:flex;flex-direction:column;gap:20px;overflow:hidden">
+            <div style="display:flex;gap:20px">
+              <div style="width:116px;height:116px;flex-shrink:0;border-radius:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center">
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" style="opacity:0.18"><rect x="5" y="5" width="26" height="26" rx="3" stroke="white" stroke-width="1.5"/><path d="M12 18h12M18 12v12" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+              <div style="flex:1;display:flex;flex-direction:column;gap:11px">
+                <div style="font-size:17px;font-weight:700;color:rgba(255,255,255,0.85)">nike-air-force-1-low-white</div>
+                <div style="display:flex;gap:7px;flex-wrap:wrap">
+                  <span style="padding:4px 10px;background:rgba(255,255,255,0.05);border-radius:5px;font-size:12px;color:rgba(255,255,255,0.4);font-family:monospace">状態: N級</span>
+                  <span style="padding:4px 10px;background:rgba(255,255,255,0.05);border-radius:5px;font-size:12px;color:rgba(255,255,255,0.4);font-family:monospace">¥18,000</span>
+                  <span style="padding:4px 10px;background:rgba(255,255,255,0.05);border-radius:5px;font-size:12px;color:rgba(255,255,255,0.4);font-family:monospace">27.5 cm</span>
+                </div>
+                <p style="font-size:13px;color:rgba(255,255,255,0.3);line-height:1.6">昨年購入したBNWT状態です。試着のみで未使用。送料込み。</p>
+                <div style="display:flex;align-items:center;gap:7px">
+                  <div style="width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,0.08)"></div>
+                  <span style="font-size:12px;color:rgba(255,255,255,0.25)">sneaker_jp_user82</span>
+                </div>
+              </div>
+            </div>
+            <div style="padding:13px 16px;background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.1);border-radius:9px">
+              <p style="font-size:12px;color:rgba(239,68,68,0.55);line-height:1.5">⚠ Jargon untranslated · Price not converted · Size shown as raw measurement · Seller note left in Japanese</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- AFTER panel (clipped by slider) -->
+        <div style="{{ afterStyle }}">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;background:rgba(5,5,14,0.97)">
+            <div style="padding:10px 20px;background:rgba(124,58,237,0.09);border-bottom:1px solid rgba(124,58,237,0.18);display:flex;align-items:center;gap:8px">
+              <span style="display:block;width:6px;height:6px;border-radius:50%;background:#a78bfa"></span>
+              <span style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#c4b5fd">Globuy — Localized &amp; Converted</span>
+            </div>
+            <div style="flex:1;padding:28px 36px;display:flex;flex-direction:column;gap:20px;overflow:hidden">
+              <div style="display:flex;gap:20px">
+                <div style="width:116px;height:116px;flex-shrink:0;border-radius:8px;background:rgba(124,58,237,0.07);border:1px solid rgba(124,58,237,0.18);display:flex;align-items:center;justify-content:center">
+                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" style="opacity:0.4"><rect x="5" y="5" width="26" height="26" rx="3" stroke="#a78bfa" stroke-width="1.5"/><path d="M12 18h12M18 12v12" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <div style="flex:1;display:flex;flex-direction:column;gap:11px">
+                  <div style="font-size:17px;font-weight:700;color:#ffffff">Nike Air Force 1 Low — White</div>
+                  <div style="display:flex;gap:7px;flex-wrap:wrap">
+                    <span style="padding:4px 10px;background:rgba(124,58,237,0.11);border:1px solid rgba(124,58,237,0.22);border-radius:5px;font-size:12px;color:#c4b5fd">Condition: Deadstock (N)</span>
+                    <span style="padding:4px 10px;background:rgba(56,189,248,0.09);border:1px solid rgba(56,189,248,0.18);border-radius:5px;font-size:12px;color:#7dd3fc">$121.43 <span style="opacity:0.45;font-size:11px">¥18,000</span></span>
+                    <span style="padding:4px 10px;background:rgba(52,211,153,0.09);border:1px solid rgba(52,211,153,0.18);border-radius:5px;font-size:12px;color:#6ee7b7">US M 9 <span style="opacity:0.45;font-size:11px">27.5 cm</span></span>
+                  </div>
+                  <p style="font-size:13px;color:rgba(255,255,255,0.58);line-height:1.6">Purchased last year. Brand New With Tags (BNWT). Never worn, tried on only. Shipping included.</p>
+                  <div style="display:flex;align-items:center;gap:7px">
+                    <div style="width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,0.18);border:1px solid rgba(124,58,237,0.28)"></div>
+                    <span style="font-size:12px;color:rgba(255,255,255,0.35)">sneaker_jp_user82</span>
+                  </div>
+                </div>
+              </div>
+              <div style="padding:13px 16px;background:rgba(124,58,237,0.06);border:1px solid rgba(124,58,237,0.14);border-radius:9px">
+                <p style="font-size:12px;color:rgba(167,139,250,0.7);line-height:1.5">✓ Jargon decoded · Live exchange rate applied · Size mapped to US standard · All notes fully translated</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Divider handle -->
+        <div style="{{ dividerStyle }}" onMouseDown="{{ startDrag }}" onTouchStart="{{ startDragTouch }}">
+          <div style="position:absolute;top:0;bottom:0;left:50%;width:2px;transform:translateX(-50%);background:linear-gradient(to bottom,transparent 0%,rgba(255,255,255,0.75) 20%,rgba(255,255,255,0.75) 80%,transparent 100%)"></div>
+          <div style="position:relative;z-index:1;width:42px;height:42px;border-radius:50%;background:white;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 5px rgba(255,255,255,0.12),0 4px 24px rgba(0,0,0,0.4);flex-shrink:0">
+            <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M4.5 1.5L1 6l3.5 4.5M11.5 1.5L15 6l-3.5 4.5" stroke="#1e1b4b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ FEATURES GRID ══════════ -->
+  <section id="features" style="padding:112px 32px">
+    <div style="max-width:1280px;margin:0 auto">
+
+      <div style="text-align:center;margin-bottom:72px">
+        <p style="font-size:11px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase;color:#7c3aed;margin-bottom:16px">Capabilities</p>
+        <h2 style="font-size:52px;font-weight:900;letter-spacing:-1.8px;line-height:1.1">Everything you need.<br/>Nothing you don't.</h2>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px">
+
+        <!-- Card 1 -->
+        <div style="padding:32px;border-radius:18px;background:rgba(255,255,255,0.022);border:1px solid rgba(255,255,255,0.065);backdrop-filter:blur(8px);display:flex;flex-direction:column;gap:22px;transition:transform 0.28s cubic-bezier(0.22,1,0.36,1),box-shadow 0.28s cubic-bezier(0.22,1,0.36,1),border-color 0.28s ease" style-hover="transform:translateY(-7px);border-color:rgba(167,139,250,0.38);box-shadow:0 0 0 0 transparent,0 24px 56px rgba(0,0,0,0.32),0 0 40px rgba(124,58,237,0.1)">
+          <div style="width:50px;height:50px;border-radius:13px;background:rgba(124,58,237,0.11);border:1px solid rgba(124,58,237,0.22);display:flex;align-items:center;justify-content:center">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="13" rx="2" stroke="#a78bfa" stroke-width="1.5"/><path d="M7 4v3M12 4v3M17 4v3" stroke="#a78bfa" stroke-width="1.3" stroke-linecap="round"/><path d="M3 10h18" stroke="#a78bfa" stroke-width="1.3"/><path d="M7 20h10" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round"/><path d="M12 17v3" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <h3 style="font-size:17px;font-weight:700;margin-bottom:9px;letter-spacing:-0.2px">Full-page translation</h3>
+            <p style="font-size:14px;line-height:1.7;color:rgba(255,255,255,0.48)">Catches scroll-loaded listings, pop-ups, and filter panels. No corner left untranslated.</p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div style="padding:32px;border-radius:18px;background:rgba(255,255,255,0.022);border:1px solid rgba(255,255,255,0.065);backdrop-filter:blur(8px);display:flex;flex-direction:column;gap:22px;transition:transform 0.28s cubic-bezier(0.22,1,0.36,1),box-shadow 0.28s cubic-bezier(0.22,1,0.36,1),border-color 0.28s ease" style-hover="transform:translateY(-7px);border-color:rgba(56,189,248,0.38);box-shadow:0 0 0 0 transparent,0 24px 56px rgba(0,0,0,0.32),0 0 40px rgba(37,99,235,0.1)">
+          <div style="width:50px;height:50px;border-radius:13px;background:rgba(37,99,235,0.11);border:1px solid rgba(37,99,235,0.22);display:flex;align-items:center;justify-content:center">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M7 12a5 5 0 1 0 0-1" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/><path d="M17 12a5 5 0 1 0 0 1" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/><path d="M10 9l-2 3 2 3M14 9l2 3-2 3" stroke="#38bdf8" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <h3 style="font-size:17px;font-weight:700;margin-bottom:9px;letter-spacing:-0.2px">Inline currency conversion</h3>
+            <p style="font-size:14px;line-height:1.7;color:rgba(255,255,255,0.48)">Every price converts to your local currency right where it sits, using today's live exchange rates.</p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div style="padding:32px;border-radius:18px;background:rgba(255,255,255,0.022);border:1px solid rgba(255,255,255,0.065);backdrop-filter:blur(8px);display:flex;flex-direction:column;gap:22px;transition:transform 0.28s cubic-bezier(0.22,1,0.36,1),box-shadow 0.28s cubic-bezier(0.22,1,0.36,1),border-color 0.28s ease" style-hover="transform:translateY(-7px);border-color:rgba(244,114,182,0.38);box-shadow:0 0 0 0 transparent,0 24px 56px rgba(0,0,0,0.32),0 0 40px rgba(217,70,239,0.1)">
+          <div style="width:50px;height:50px;border-radius:13px;background:rgba(217,70,239,0.09);border:1px solid rgba(217,70,239,0.2);display:flex;align-items:center;justify-content:center">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 19V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z" stroke="#f472b6" stroke-width="1.5"/><path d="M8 9h8M8 12h5M8 15h3" stroke="#f472b6" stroke-width="1.4" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <h3 style="font-size:17px;font-weight:700;margin-bottom:9px;letter-spacing:-0.2px">Luxury glossary</h3>
+            <p style="font-size:14px;line-height:1.7;color:rgba(255,255,255,0.48)">Renders resale jargon like <strong style="color:rgba(244,114,182,0.8);font-weight:600">N</strong> and <strong style="color:rgba(244,114,182,0.8);font-weight:600">BNWT</strong> correctly—never as literal, confusing mistranslations.</p>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div style="padding:32px;border-radius:18px;background:rgba(255,255,255,0.022);border:1px solid rgba(255,255,255,0.065);backdrop-filter:blur(8px);display:flex;flex-direction:column;gap:22px;transition:transform 0.28s cubic-bezier(0.22,1,0.36,1),box-shadow 0.28s cubic-bezier(0.22,1,0.36,1),border-color 0.28s ease" style-hover="transform:translateY(-7px);border-color:rgba(52,211,153,0.38);box-shadow:0 0 0 0 transparent,0 24px 56px rgba(0,0,0,0.32),0 0 40px rgba(16,185,129,0.1)">
+          <div style="width:50px;height:50px;border-radius:13px;background:rgba(16,185,129,0.09);border:1px solid rgba(16,185,129,0.2);display:flex;align-items:center;justify-content:center">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="9" width="20" height="6" rx="2" stroke="#34d399" stroke-width="1.5"/><path d="M5 9V7M8 9V7M11 9V7M14 9V7M17 9V7M20 9V7" stroke="#34d399" stroke-width="1.2" stroke-linecap="round"/><path d="M5 15v2M8 15v2M11 15v2M14 15v2M17 15v2M20 15v2" stroke="#34d399" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <h3 style="font-size:17px;font-weight:700;margin-bottom:9px;letter-spacing:-0.2px">Size conversion to US</h3>
+            <p style="font-size:14px;line-height:1.7;color:rgba(255,255,255,0.48)">Footwear and apparel sizing mapped automatically. Always labeled so you know exactly what you're getting.</p>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div style="padding:32px;border-radius:18px;background:rgba(255,255,255,0.022);border:1px solid rgba(255,255,255,0.065);backdrop-filter:blur(8px);display:flex;flex-direction:column;gap:22px;transition:transform 0.28s cubic-bezier(0.22,1,0.36,1),box-shadow 0.28s cubic-bezier(0.22,1,0.36,1),border-color 0.28s ease" style-hover="transform:translateY(-7px);border-color:rgba(251,191,36,0.38);box-shadow:0 0 0 0 transparent,0 24px 56px rgba(0,0,0,0.32),0 0 40px rgba(245,158,11,0.1)">
+          <div style="width:50px;height:50px;border-radius:13px;background:rgba(245,158,11,0.09);border:1px solid rgba(245,158,11,0.2);display:flex;align-items:center;justify-content:center">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.5" stroke="#fbbf24" stroke-width="1.5"/><path d="M15.5 15.5L20 20" stroke="#fbbf24" stroke-width="1.6" stroke-linecap="round"/><path d="M7.5 10.5h6M10.5 7.5v6" stroke="#fbbf24" stroke-width="1.4" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <h3 style="font-size:17px;font-weight:700;margin-bottom:9px;letter-spacing:-0.2px">Search in English</h3>
+            <p style="font-size:14px;line-height:1.7;color:rgba(255,255,255,0.48)">Type in English; the extension translates your query into the site's language so you find exactly what you want.</p>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div style="padding:32px;border-radius:18px;background:rgba(255,255,255,0.022);border:1px solid rgba(255,255,255,0.065);backdrop-filter:blur(8px);display:flex;flex-direction:column;gap:22px;transition:transform 0.28s cubic-bezier(0.22,1,0.36,1),box-shadow 0.28s cubic-bezier(0.22,1,0.36,1),border-color 0.28s ease" style-hover="transform:translateY(-7px);border-color:rgba(167,139,250,0.38);box-shadow:0 0 0 0 transparent,0 24px 56px rgba(0,0,0,0.32),0 0 40px rgba(124,58,237,0.1)">
+          <div style="width:50px;height:50px;border-radius:13px;background:rgba(124,58,237,0.11);border:1px solid rgba(124,58,237,0.22);display:flex;align-items:center;justify-content:center">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2.5l8.5 4.75v5c0 4.75-3.5 8.5-8.5 10-5-1.5-8.5-5.25-8.5-10v-5L12 2.5z" stroke="#a78bfa" stroke-width="1.5" stroke-linejoin="round"/><path d="M8.5 12l2.5 2.5 5-5" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <h3 style="font-size:17px;font-weight:700;margin-bottom:9px;letter-spacing:-0.2px">100% Local Processing</h3>
+            <p style="font-size:14px;line-height:1.7;color:rgba(255,255,255,0.48)">Translation runs entirely on your device. Only currency codes are ever sent out—never your content.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ FOOTER CTA ══════════ -->
+  <section id="privacy" style="padding:112px 32px 80px">
+    <div style="max-width:600px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center">
+
+      <!-- Vertical accent line -->
+      <div style="width:1.5px;height:72px;background:linear-gradient(to bottom,transparent,rgba(124,58,237,0.65));margin-bottom:52px"></div>
+
+      <h2 style="font-size:60px;font-weight:900;letter-spacing:-2.2px;line-height:1.04;margin-bottom:18px">Start shopping<br/>without borders.</h2>
+      <p style="font-size:17px;color:rgba(255,255,255,0.4);margin-bottom:52px;font-weight:400">Free, private, and ready in seconds.</p>
+
+      <a href="#" style="display:inline-flex;align-items:center;gap:12px;padding:18px 48px;border-radius:999px;background:linear-gradient(135deg,#7c3aed,#2563eb);font-size:17px;font-weight:700;color:#fff;letter-spacing:-0.1px;box-shadow:0 0 56px rgba(124,58,237,0.52),0 0 112px rgba(124,58,237,0.24);margin-bottom:18px;transition:all 0.3s ease" style-hover="transform:translateY(-3px);box-shadow:0 0 72px rgba(124,58,237,0.7),0 0 140px rgba(124,58,237,0.35)">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8.5" stroke="rgba(255,255,255,0.55)" stroke-width="1.3"/><path d="M6.5 10h7M10 6.5v7" stroke="rgba(255,255,255,0.75)" stroke-width="1.6" stroke-linecap="round"/></svg>
+        Add to Chrome — Free
+      </a>
+      <span style="font-size:12px;color:rgba(255,255,255,0.2);letter-spacing:0.6px;margin-bottom:56px">On-device&nbsp;&nbsp;·&nbsp;&nbsp;No tracking&nbsp;&nbsp;·&nbsp;&nbsp;Free forever</span>
+
+      <!-- Privacy card -->
+      <div style="width:100%;padding:28px 30px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.055);border-radius:14px;text-align:left;margin-bottom:48px">
+        <p style="font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px">About your privacy</p>
+        <p style="font-size:13px;line-height:1.85;color:rgba(255,255,255,0.28)">
+          Globuy uses Chrome's built-in on-device translation model. Page text is processed entirely within your browser—it never leaves your machine. Only currency codes (like USD, KRW, JPY) are sent to an exchange rate API to fetch the latest rate. No page content, product names, seller information, or search queries are ever transmitted. Nothing you read, shop for, or type is sent anywhere.
+        </p>
+      </div>
+
+      <!-- Footer nav -->
+      <div style="display:flex;gap:28px;margin-bottom:20px">
+        <a href="#" style="font-size:13px;color:rgba(255,255,255,0.22);transition:color 0.2s" style-hover="color:rgba(255,255,255,0.6)">Privacy Policy</a>
+        <a href="#" style="font-size:13px;color:rgba(255,255,255,0.22);transition:color 0.2s" style-hover="color:rgba(255,255,255,0.6)">Terms</a>
+        <a href="#" style="font-size:13px;color:rgba(255,255,255,0.22);transition:color 0.2s" style-hover="color:rgba(255,255,255,0.6)">Contact</a>
+      </div>
+      <p style="font-size:12px;color:rgba(255,255,255,0.1)">© 2025 Globuy. All rights reserved.</p>
+    </div>
+  </section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 1440, &quot;height&quot;: 900 }
+}">
+class Component extends DCLogic {
+  state = { currencyIdx: 0, sliderPos: 50, dragging: false };
+
+  _currencies = [
+    'In your $ USD',
+    'In your ₩ KRW',
+    'In your ¥ JPY',
+    'In your € EUR',
+  ];
+
+  componentDidMount() {
+    this._timer = setInterval(() => {
+      this.setState(s => ({ currencyIdx: (s.currencyIdx + 1) % 4 }));
+    }, 2200);
+
+    this._onMove = (e) => {
+      if (!this.state.dragging) return;
+      const el = document.getElementById('bfslider');
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const pct = Math.max(6, Math.min(94, ((clientX - r.left) / r.width) * 100));
+      this.setState({ sliderPos: pct });
+    };
+
+    this._onUp = () => {
+      if (this.state.dragging) this.setState({ dragging: false });
+    };
+
+    window.addEventListener('mousemove', this._onMove);
+    window.addEventListener('mouseup', this._onUp);
+    window.addEventListener('touchmove', this._onMove);
+    window.addEventListener('touchend', this._onUp);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this._timer);
+    window.removeEventListener('mousemove', this._onMove);
+    window.removeEventListener('mouseup', this._onUp);
+    window.removeEventListener('touchmove', this._onMove);
+    window.removeEventListener('touchend', this._onUp);
+  }
+
+  renderVals() {
+    const { currencyIdx, sliderPos, dragging } = this.state;
+
+    const currencyRotator = React.createElement('span', {
+      key: currencyIdx,
+      style: {
+        display: 'block',
+        animation: 'slotIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards',
+        background: 'linear-gradient(115deg, #c4b5fd 0%, #67e8f9 100%)',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        backgroundClip: 'text',
+        color: 'transparent',
+      }
+    }, this._currencies[currencyIdx]);
+
+    return {
+      currencyRotator,
+      afterStyle: {
+        position: 'absolute',
+        inset: 0,
+        clipPath: `inset(0 ${(100 - sliderPos).toFixed(1)}% 0 0)`,
+      },
+      dividerStyle: {
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        left: `${sliderPos.toFixed(1)}%`,
+        transform: 'translateX(-50%)',
+        width: '48px',
+        zIndex: 10,
+        cursor: dragging ? 'grabbing' : 'ew-resize',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        userSelect: 'none',
+      },
+      startDrag: (e) => {
+        const el = document.getElementById('bfslider');
+        if (!el) return;
+        const r = el.getBoundingClientRect();
+        const pct = Math.max(6, Math.min(94, ((e.clientX - r.left) / r.width) * 100));
+        this.setState({ dragging: true, sliderPos: pct });
+      },
+      startDragTouch: (e) => {
+        const el = document.getElementById('bfslider');
+        if (!el) return;
+        const r = el.getBoundingClientRect();
+        const pct = Math.max(6, Math.min(94, ((e.touches[0].clientX - r.left) / r.width) * 100));
+        this.setState({ dragging: true, sliderPos: pct });
+      },
+    };
+  }
+}
+</script>
+<script>
+(async () => {
+  if (!document.title || !document.title.trim()) document.title = "Globuy";
+  // Prepend so page-supplied @page / break rules (deck-stage's margin:0,
+  // author CSS) keep source-order precedence over the baseline.
+  const baseCss = document.createElement('style');
+  baseCss.textContent = "@media print {\n  figure, table { break-inside: avoid; }\n  *, *::before, *::after {\n    print-color-adjust: exact; -webkit-print-color-adjust: exact;\n    backdrop-filter: none !important; -webkit-backdrop-filter: none !important;\n    animation-delay: -99s !important; animation-duration: .001s !important;\n    animation-iteration-count: 1 !important; animation-fill-mode: both !important;\n    animation-play-state: running !important; transition-duration: 0s !important;\n  }\n}";
+  document.head.prepend(baseCss);
+  if (document.readyState === 'loading') {
+    await new Promise((r) => document.addEventListener('DOMContentLoaded', r, { once: true }));
+  }
+  let ds = document.querySelector('deck-stage');
+  // whenDefined never resolves when nothing registers the element, so only
+  // await it when a <deck-stage> tag exists (and race a timeout regardless).
+  if (ds && !customElements.get('deck-stage')) {
+    try {
+      await Promise.race([
+        customElements.whenDefined('deck-stage'),
+        new Promise((r) => setTimeout(r, 3000)),
+      ]);
+    } catch (e) {}
+    ds = document.querySelector('deck-stage');
+  }
+  // dc-runtime assigns window.DCLogic at init and mounts into #dc-root on
+  // DOMContentLoaded; settle on that subtree so React has rendered before
+  // print(). Non-DC pages fall through to weighing body.
+  const isDc = !ds && 'DCLogic' in window;
+  const settleRoot = ds || (isDc ? document.getElementById('dc-root') : null) || document.body;
+  if (settleRoot) {
+    // Weigh only content children — skip script/style/template so inline
+    // Babel/CSS doesn't register as stable "content" before the framework
+    // has mounted anything.
+    const MEDIA = 'img,svg,canvas,video,picture,iframe,embed,object';
+    const weigh = () => {
+      let text = 0, media = 0;
+      for (const c of settleRoot.children) {
+        const t = c.tagName;
+        if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+        text += (c.textContent || '').trim().length;
+        media += c.querySelectorAll(MEDIA).length + (c.matches(MEDIA) ? 1 : 0);
+      }
+      return text + media * 100;
+    };
+    // "Non-zero and stable" alone is not sufficient to mean rendered: generic
+    // body can carry a static shell while async main content is pending, and
+    // #dc-root can carry the root DC's static text while child refs are still
+    // .sc-placeholder boxes. Gate generic on readyState 'complete', and never
+    // accept stability while a dc-runtime placeholder is present.
+    const isGeneric = settleRoot === document.body;
+    const deadline = Date.now() + 15000;
+    let last = -1, stable = 0;
+    while (Date.now() < deadline) {
+      const n = weigh();
+      const ready =
+        (!isGeneric || document.readyState === 'complete') &&
+        !settleRoot.querySelector('.sc-placeholder');
+      if (n > 0 && n === last && ready) { if (++stable >= 2) break; } else { stable = 0; }
+      last = n;
+      await new Promise((r) => setTimeout(r, 250));
+    }
+  }
+  // Reveal content gated on scroll or visibility before printing. Lazy <img>,
+  // IntersectionObserver fade-ins, and collapsed <details> don't render while
+  // off-screen, so a long page would print with them blank or closed. Open
+  // every <details>, force native-lazy images eager, and scroll the document
+  // through its full height to trip lazy-load + IO; then wait (bounded) for the
+  // newly-triggered images. Inert for deck-stage (slides aren't scroll-gated).
+  try {
+    for (const d of document.querySelectorAll('details')) d.open = true;
+    for (const img of document.querySelectorAll('img[loading="lazy"]'))
+      img.loading = 'eager';
+    const scroller = document.scrollingElement || document.documentElement;
+    const full = Math.max(scroller.scrollHeight, document.body.scrollHeight);
+    const step = window.innerHeight || 800;
+    for (let y = 0; y <= full; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((r) => requestAnimationFrame(r));
+    }
+    window.scrollTo(0, 0);
+    await Promise.race([
+      Promise.all(
+        [...document.images].map((img) =>
+          img.complete
+            ? null
+            : new Promise((res) => {
+                img.addEventListener('load', res, { once: true });
+                img.addEventListener('error', res, { once: true });
+              })
+        )
+      ),
+      new Promise((r) => setTimeout(r, 4000)),
+    ]);
+  } catch (e) {}
+  try { await document.fonts.ready; } catch (e) {}
+  // Jump every animation to its end state so print() never captures a slide
+  // mid-entrance. Ordering matters: the 0s-transition style must be live
+  // BEFORE data-deck-active is set so attribute-keyed transitions don't
+  // start a (now-0s) run from the pre-active base.
+  const st = document.createElement('style');
+  st.textContent = '*,*::before,*::after{animation-delay:-99s !important;animation-duration:.001s !important;animation-iteration-count:1 !important;animation-fill-mode:both !important;animation-play-state:running !important;transition-duration:0s !important}';
+  document.head.appendChild(st);
+  for (const d of document.querySelectorAll('deck-stage')) {
+    for (const c of d.children) {
+      const t = c.tagName;
+      if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+      c.setAttribute('data-deck-active', '');
+    }
+  }
+  // Re-append deck-stage's @page last so no author @page can add a margin and
+  // spill each full-bleed slide onto two sheets. Backstop for old copies.
+  if (ds) {
+    let pg = document.getElementById('deck-stage-print-page');
+    if (!pg) {
+      pg = document.createElement('style');
+      pg.textContent = '@page{size:' + (+ds.getAttribute('width') || 1920) +
+        'px ' + (+ds.getAttribute('height') || 1080) + 'px;margin:0}';
+    }
+    document.body.appendChild(pg);
+  }
+  try {
+    const sweep = () => {
+      for (const a of document.getAnimations()) {
+        try { a.finish(); } catch (e) {
+          try { a.currentTime = (a.effect && a.effect.getComputedTiming().duration) || 0; a.pause(); } catch (e2) {}
+        }
+      }
+    };
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+  } catch (e) {}
+  // Size the PDF page to the rendered design unless the file opted into
+  // standard paper via @page{size:letter|A4|…}. Decks own their own @page.
+  var __m = null;
+  try { __m = (() => {
+  var docEl = document.documentElement;
+  var doc = { width: docEl.scrollWidth, height: docEl.scrollHeight };
+
+  var ds = document.querySelector('deck-stage');
+  if (ds) {
+    var dw = Number(ds.getAttribute('width')) || 1920;
+    var dh = Number(ds.getAttribute('height')) || 1080;
+    var n = typeof ds.length === 'number' ? ds.length : ds.children.length;
+    var idx = typeof ds.index === 'number' ? ds.index : 0;
+    var frames = [];
+    for (var i = 0; i < n; i++) frames.push({ left: 0, top: 0, width: dw, height: dh });
+    return { kind: 'deck', doc: doc, frames: frames,
+      authored: frames.map(function(){return{width:true,height:true}}),
+      deck: { width: dw, height: dh, slideCount: n, index: idx },
+      signals: { paperPage: false, pxPage: false } };
+  }
+
+  var paperPage = false, pxPage = false;
+  var eachRule = function (fn) {
+    for (var s = 0; s < document.styleSheets.length; s++) {
+      var rs; try { rs = document.styleSheets[s].cssRules; } catch (e) { continue; }
+      for (var r = 0; r < rs.length; r++) {
+        fn(rs[r]);
+        if (rs[r].cssRules) for (var n = 0; n < rs[r].cssRules.length; n++) fn(rs[r].cssRules[n]);
+      }
+    }
+  };
+  eachRule(function (r) {
+    if (r.type !== 6) return;
+    var m = /\bsize\s*:\s*([^;}]+)/i.exec(r.cssText || '');
+    if (!m) return;
+    if (/\b(letter|a[3-5]|legal|ledger)\b/i.test(m[1])) paperPage = true;
+    if (/\d+(?:\.\d+)?px\b/i.test(m[1])) pxPage = true;
+  });
+  var signals = { paperPage: paperPage, pxPage: pxPage };
+
+  if (paperPage) {
+    return { kind: 'paper-doc', doc: doc, signals: signals,
+      frames: [{ left: 0, top: 0, width: doc.width, height: doc.height }],
+      authored: [{ width: false, height: false }] };
+  }
+
+  var pxVal = function (v) {
+    var m = /^(\d+(?:\.\d+)?)px$/.exec(v || ''); return m ? +m[1] : 0;
+  };
+  var authoredPx = function (el, prop) {
+    if (pxVal(el.style[prop])) return true;
+    var attr = el.getAttribute(prop);
+    if (attr && /^\d+$/.test(attr)) return true;
+    var hit = false;
+    eachRule(function (r) {
+      if (hit || r.type !== 1 || !r.style) return;
+      try { if (el.matches(r.selectorText) && pxVal(r.style[prop])) hit = true; } catch (e) {}
+    });
+    return hit;
+  };
+
+  var el = document.body;
+  for (;;) {
+    var kids = [];
+    for (var c = 0; c < el.children.length; c++) {
+      var t = el.children[c].tagName;
+      if (t !== 'SCRIPT' && t !== 'STYLE' && t !== 'TEMPLATE') kids.push(el.children[c]);
+    }
+    if (kids.length !== 1 || !(kids[0] instanceof HTMLElement)) break;
+    el.setAttribute('data-om-frame-wrap', '');
+    el = kids[0];
+    if (authoredPx(el, 'width')) break;
+  }
+
+  var sx = window.scrollX || 0, sy = window.scrollY || 0;
+  var rectOf = function (e) {
+    var r = e.getBoundingClientRect();
+    var oy; try { oy = getComputedStyle(e).overflowY; } catch (err) {}
+    var h = oy === 'visible' ? Math.max(r.height, e.scrollHeight || 0) : r.height;
+    return { left: r.left + sx, top: r.top + sy, width: r.width, height: h };
+  };
+
+  // Multi-frame: ≥2 visible non-fixed children, each with authored px width
+  // AND height, all within ±2px of each other. Off unless the page opts in
+  // via data-om-multi-frame on the stop element — guards against card grids
+  // and pricing tables that match the geometry but aren't separate canvases.
+  if (el.hasAttribute('data-om-multi-frame')) {
+    var cands = [];
+    for (var k = 0; k < el.children.length; k++) {
+      var ch = el.children[k];
+      var cs; try { cs = getComputedStyle(ch); } catch (e) { continue; }
+      if (cs.display === 'none' || cs.visibility === 'hidden' || cs.position === 'fixed') continue;
+      var rc = rectOf(ch);
+      if (rc.width < 2 || rc.height < 2) continue;
+      if (!authoredPx(ch, 'width') || !authoredPx(ch, 'height')) continue;
+      cands.push(rc);
+    }
+    if (cands.length >= 2) {
+      var w0 = cands[0].width, h0 = cands[0].height, ok = true;
+      for (var q = 1; q < cands.length; q++)
+        if (Math.abs(cands[q].width - w0) > 2 || Math.abs(cands[q].height - h0) > 2) ok = false;
+      if (ok) return { kind: 'multi-frame', doc: doc, signals: signals,
+        frames: cands, authored: cands.map(function(){return{width:true,height:true}}) };
+    }
+  }
+
+  return { kind: 'single-canvas', doc: doc, signals: signals,
+    frames: [rectOf(el)],
+    authored: [{ width: authoredPx(el, 'width'), height: authoredPx(el, 'height') }] };
+})(); } catch (e) {}
+  var frame = null;
+  if (__m && __m.kind === 'single-canvas') {
+    var f = __m.frames && __m.frames[0];
+    if (f && f.width >= 200 && f.height >= 200) {
+      frame = f;
+      var fst = document.createElement('style');
+      fst.textContent = '@media print{@page{size:' + f.width + 'px ' + f.height +
+        'px;margin:0}html,body,[data-om-frame-wrap]{padding:0!important;' +
+        'margin:0!important;background:none!important}}';
+      document.body.appendChild(fst);
+    }
+  }
+  // Relax break-inside on oversized elements. An element taller than a
+  // printable page can't honor break-inside: avoid — browsers either overflow
+  // it or push it whole to the next page, leaving a blank gap, then break it
+  // anyway at an arbitrary point. After the final layout (content revealed,
+  // animations jumped), find elements taller than a page that still compute
+  // break-inside: avoid and reset them to auto, so the browser breaks them at
+  // their children's boundaries instead (children keep their own avoid). PAGE_PX
+  // is a conservative portrait estimate at 96 CSS px/in — Letter/A4 usable
+  // height minus our 0.5in margins — so only clearly-oversized elements are
+  // touched and under-page elements still stay whole. Skipped for decks (slides
+  // are sized to the page) and for fixed-size canvases (frame set, or an author
+  // px-based @page) — runs as before for flowing docs on letter/A4.
+  try {
+    if (!ds && !frame && !(__m && __m.signals && __m.signals.pxPage)) {
+      const PAGE_PX = 1024;
+      // Our print defaults add a real @page margin only when the source has
+      // no @page of its own; computed style can't tell us (it reports screen
+      // media), so read the injected rule directly.
+      const defaults = document.querySelector('style[data-omelette-print-defaults]');
+      const pageInset = /@page\s*\{[^}]*margin/.test(defaults ? defaults.textContent || '' : '');
+      const SEL = 'section,article,figure,table,pre,blockquote,[class~="card" i],[class~="page" i],[class~="sheet" i]';
+      for (const el of document.body.querySelectorAll(SEL)) {
+        if (el instanceof HTMLElement && el.offsetHeight > PAGE_PX) {
+          el.setAttribute('data-om-oversized', '');
+          // Fake-paged docs simulate sheets with over-tall break-after:page
+          // boxes; honoring the break spills half-blank pages and ends a
+          // colored box mid-sheet. Flow them, and (only when we own the page
+          // inset) drop the redundant padding/background via the rule below.
+          const cs = getComputedStyle(el);
+          if (cs.breakAfter === 'page' || cs.pageBreakAfter === 'always') {
+            el.setAttribute('data-om-fakepage', '');
+          }
+        }
+      }
+      const ost = document.createElement('style');
+      ost.textContent = '@media print{' +
+        '[data-om-oversized]{break-inside:auto !important;page-break-inside:auto !important}' +
+        '[data-om-fakepage]{break-after:auto !important;page-break-after:auto !important}' +
+        (pageInset ? '[data-om-fakepage]{padding:0 !important;background:none !important}' : '') +
+        '}';
+      document.head.appendChild(ost);
+    }
+  } catch (e) {}
+  // macOS Preview renders Skia-PDF Luminosity soft-masks as opaque grey boxes;
+  // swap the CSS that triggers them for Preview-safe forms.
+  try {
+    for (const el of document.body.querySelectorAll('*')) {
+      const cs = getComputedStyle(el);
+
+      if (cs.boxShadow !== 'none' && cs.filter === 'none') {
+        const outs = [], kept = [];
+        for (const s of cs.boxShadow.split(/,(?![^(]*[)])/)) {
+          const t = s.trim();
+          const m = t.match(/^(rgba?[(][^)]+[)]) (-?[0-9.]+px) (-?[0-9.]+px) ([0-9.]+px) -?[0-9.]+px$/);
+          if (m && parseFloat(m[4]) > 0) outs.push('drop-shadow(' + m[2] + ' ' + m[3] + ' ' + m[4] + ' ' + m[1] + ')');
+          else kept.push(t);
+        }
+        if (outs.length) {
+          el.style.setProperty('filter', outs.join(' '), 'important');
+          el.style.setProperty('box-shadow', kept.join(', ') || 'none', 'important');
+        }
+      }
+
+      const mask = cs.maskImage && cs.maskImage !== 'none' ? cs.maskImage : cs.webkitMaskImage;
+      if (mask && mask !== 'none' && cs.filter === 'none') el.style.setProperty('filter', 'opacity(1)', 'important');
+    }
+  } catch (e) {}
+  setTimeout(() => { try { window.print(); } catch (e) {} }, 200);
+})();
+</script>
+</body>
+</html>

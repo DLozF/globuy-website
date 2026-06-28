@@ -1,0 +1,401 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #FFFFFF;
+      color: #111111;
+      font-family: 'Inter', Helvetica, Arial, sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection { background: rgba(17,17,17,0.12); }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── Slot machine ── */
+    @keyframes slotMachine {
+      0%         { transform: translateY(0%); }
+      20%        { transform: translateY(0%); animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1); }
+      25%        { transform: translateY(-20%); }
+      45%        { transform: translateY(-20%); animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1); }
+      50%        { transform: translateY(-40%); }
+      70%        { transform: translateY(-40%); animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1); }
+      75%        { transform: translateY(-60%); }
+      95%        { transform: translateY(-60%); animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1); }
+      100%       { transform: translateY(-80%); }
+    }
+
+    @keyframes liveDot {
+      0%, 100% { opacity: 1; }
+      50%      { opacity: 0.3; }
+    }
+  </style>
+</helmet>
+
+<!-- ══════════ NAVBAR ══════════ -->
+<nav style="position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid #E5E7EB">
+  <div style="max-width:1280px;margin:0 auto;padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between">
+
+    <div style="display:flex;align-items:center;gap:9px">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <polygon points="12,1.5 22,6.5 22,17.5 12,22.5 2,17.5 2,6.5" fill="none" stroke="#111" stroke-width="1.5"></polygon>
+        <text x="12" y="15.5" text-anchor="middle" font-family="Inter,Helvetica,sans-serif" font-size="7" font-weight="800" fill="#111">GB<text>
+      </svg>
+      <span style="font-weight:700;font-size:15px;letter-spacing:-0.3px;color:#111">Globuy</span>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:24px">
+      <a href="#features" style="font-size:14px;font-weight:500;color:#6B7280;transition:color 0.15s" style-hover="color:#111">Features</a>
+      <a href="#privacy" style="font-size:14px;font-weight:500;color:#6B7280;transition:color 0.15s" style-hover="color:#111">Privacy</a>
+      <a href="#" style="display:inline-flex;align-items:center;gap:7px;padding:8px 18px;border-radius:5px;background:#111;color:#fff;font-size:13px;font-weight:600;letter-spacing:0.1px;transition:background 0.15s" style-hover="background:#2D2D2D">
+        Add to Chrome
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<section style="max-width:1280px;margin:0 auto;padding:100px 32px 88px;display:grid;grid-template-columns:55fr 45fr;gap:64px;align-items:center">
+
+  <!-- Left: copy -->
+  <div style="display:flex;flex-direction:column">
+
+    <!-- Badge -->
+    
+
+    <!-- Headline -->
+    
+
+    <!-- Slot machine rotator -->
+    <div style="width:fit-content;height:98px;display:flex;align-items:center;font-size:80px;font-weight:900;line-height:1;letter-spacing:-3.5px;margin-bottom:6px;color:#111;white-space:nowrap">The whole page.</div><div style="width:fit-content;height:98px;overflow:hidden;margin-bottom:36px;isolation:isolate">
+      <div style="display:flex;flex-direction:column;animation:slotMachine 10s linear infinite;will-change:transform">
+        
+        <div style="height:98px;display:flex;align-items:center;font-size:80px;font-weight:900;letter-spacing:-3.5px;line-height:1;color:#C45E35;white-space:nowrap;background:#fff">In your $ USD</div><div style="height:98px;display:flex;align-items:center;font-size:80px;font-weight:900;letter-spacing:-3.5px;line-height:1;color:#2563B0;white-space:nowrap;background:#fff">In your ₩ KRW</div>
+        <div style="height:98px;display:flex;align-items:center;font-size:80px;font-weight:900;letter-spacing:-3.5px;line-height:1;color:#167A58;white-space:nowrap;background:#fff">In your ¥ JPY</div>
+        <div style="height:98px;display:flex;align-items:center;font-size:80px;font-weight:900;letter-spacing:-3.5px;line-height:1;color:#6D40B5;white-space:nowrap;background:#fff">In your € EUR</div>
+        <div style="height:98px;display:flex;align-items:center;font-size:80px;font-weight:900;letter-spacing:-3.5px;line-height:1;color:#C45E35;white-space:nowrap;background:#fff">In your $ USD</div>
+      </div>
+    </div>
+
+    <!-- Subtext -->
+    <p style="font-size:17px;line-height:1.75;color:#6B7280;max-width:480px;margin-bottom:44px;font-weight:400">Generic translators skip half the page. Globuy catches everything: product names, condition grades, seller notes across Korean, Japanese, Chinese, and Vietnamese resale sites.</p>
+
+    <!-- CTA cluster -->
+    <div style="display:flex;flex-direction:column;gap:13px;align-items:flex-start">
+      <a href="#" style="display: inline-flex; align-items: center; gap: 10px; padding: 16px 36px; border-radius: 100px; background: #111; color: #fff; font-size: 16px; font-weight: 700; letter-spacing: -0.1px; transition: background 0.15s" style-hover="background:#2D2D2D">
+        
+        Add to Chrome, it's Free!
+      </a>
+      <span style="font-size:12px;color:#9CA3AF;letter-spacing:0.4px">On-device&nbsp;&nbsp;·&nbsp;&nbsp;No tracking&nbsp;&nbsp;·&nbsp;&nbsp;Free forever</span>
+    </div>
+  </div>
+
+  <!-- Right: browser mockup -->
+  <div style="display:flex;justify-content:center">
+    
+  </div>
+
+</section>
+
+<!-- Divider -->
+<div style="height:1px;background:#F3F4F6;max-width:100%;margin:0"></div>
+
+<!-- ══════════ DEMO SECTION ══════════ -->
+<section style="background:#F9FAFB;padding:100px 32px">
+  <div style="max-width:1280px;margin:0 auto">
+
+    <div style="text-align:center;margin-bottom:56px">
+      
+      <h2 style="font-size:52px;font-weight:900;letter-spacing:-1.8px;line-height:1.04;color:#111">See the Difference.</h2>
+      
+    </div>
+
+    <!-- Product browser mockup -->
+    <div style="max-width:900px;margin:0 auto">
+
+      <div style="background:#fff;border:1px solid #ece8df;border-radius:22px;overflow:hidden;box-shadow:0 2px 24px rgba(28,27,24,0.05);">
+
+        <!-- Browser chrome -->
+        
+
+        <!-- Product detail -->
+        <div style="padding:13px 20px;border-bottom:1px solid #ece8df;background:#faf8f3;display:flex;align-items:center;gap:14px;">
+          <div style="display:flex;gap:6px;flex-shrink:0;">
+            <div style="width:11px;height:11px;border-radius:50%;background:#f87171;"></div>
+            <div style="width:11px;height:11px;border-radius:50%;background:#fbbf24;"></div>
+            <div style="width:11px;height:11px;border-radius:50%;background:#4ade80;"></div>
+          </div>
+          <div style="flex:1;max-width:300px;background:#fff;border:1px solid #ece8df;border-radius:100px;padding:6px 14px;display:flex;align-items:center;gap:6px;">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#6b6862" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <span style="font-size:12px;color:#6b6862;">kream.co.kr/products/detail</span>
+          </div>
+          
+        </div><div style="padding:36px 32px;display:flex;gap:36px;align-items:flex-start;">
+
+          <!-- Product image -->
+          
+
+          <!-- Info column -->
+          <div style="flex-shrink: 0; width: 248px; height: 248px; border-radius: 16px; overflow: hidden; background: url(&quot;https://cdn-images.farfetch-contents.com/18/43/88/94/18438894_52090560_600.jpg&quot;) center / cover no-repeat; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px">
+            
+            
+          </div><div style="flex:1;min-width:0;padding-top:2px;">
+
+            <!-- Brand -->
+            <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid #ece8df;">
+              <span style="font-size:13px;color:#6b6862;">메종 마르지엘라</span>
+              <span style="font-size:12px;color:#c9a227;font-style:italic;">Maison Margiela</span>
+            </div>
+
+            <!-- Product name -->
+            <div style="margin-bottom:22px;">
+              <div style="font-size:24px;font-weight:500;color:#1c1b18;letter-spacing:-0.025em;line-height:1.2;margin-bottom:6px;">타비 로우 스니커즈 38</div>
+              <div style="font-size:14px;color:#c9a227;font-style:italic;">Tabi Low Sneakers — EU 38 <span style="font-style:normal;color:#a8a29e;font-size:12px;">≈ US Women's 7.5</span></div>
+            </div>
+
+            <!-- Condition -->
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+              <span style="font-size:12px;color:#6b6862;width:48px;flex-shrink:0;">상태</span>
+              <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                <span style="background:#f0ede6;color:#6b6862;border-radius:100px;padding:3px 11px;font-size:12px;">S급</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                <span style="font-size:13px;color:#1c1b18;font-weight:500;">Grade S</span>
+                <span style="font-size:12px;color:#c9a227;font-style:italic;">(Like New)</span>
+              </div>
+            </div>
+
+            <!-- Seller note -->
+            <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:28px;">
+              <span style="font-size:12px;color:#6b6862;width:48px;flex-shrink:0;padding-top:1px;">설명</span>
+              <div style="display:flex;flex-direction:column;gap:3px;">
+                <span style="font-size:12px;color:#a8a29e;line-height:1.5;">박스 미포함, 정품 구매 이력 있음</span>
+                <span style="font-size:12px;color:#c9a227;font-style:italic;line-height:1.5;">Box not included. Verified authentic purchase history.</span>
+              </div>
+            </div>
+
+            <!-- Price -->
+            <div style="padding:4px 0 20px;">
+              <div style="font-size:32px;font-weight:400;line-height:1.1;letter-spacing:-0.02em;white-space:nowrap;">
+                <span style="color:#1c1b18;">1,200,000원</span><span style="color:#c9a227;"> (≈ $870)</span>
+              </div>
+            </div>
+
+            <!-- Buy button -->
+            <div style="display:flex;gap:10px;">
+              <div style="flex:1;background:#1c1b18;border-radius:100px;padding:13px 0;text-align:center;color:#fff;font-size:14px;font-weight:500;">구매하기</div>
+              <div style="width:48px;height:48px;border:1px solid #ece8df;border-radius:100px;display:flex;align-items:center;justify-content:center;background:#fff;flex-shrink:0;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b6862" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Divider -->
+<div style="height:1px;background:#F3F4F6"></div>
+
+<!-- ══════════ FEATURES GRID ══════════ -->
+<section id="features" style="padding:100px 32px;background:#fff">
+  <div style="max-width:1280px;margin:0 auto">
+
+    <div style="text-align:center;margin-bottom:64px">
+      
+      <h2 style="font-size:52px;font-weight:900;letter-spacing:-1.8px;line-height:1.08;color:#111">Everything you need.<br>Nothing you don't.</h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+
+      <!-- Card 1 -->
+      <div style="padding:28px;border-radius:8px;background:#F3F4F6;display:flex;flex-direction:column;gap:20px;transition:transform 0.2s ease,box-shadow 0.2s ease" style-hover="transform:translateY(-5px);box-shadow:3px 3px 0 rgba(0,0,0,0.18)">
+        <div style="width:44px;height:44px;border-radius:8px;background:#E5E7EB;display:flex;align-items:center;justify-content:center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="13" rx="2" stroke="#111" stroke-width="1.5"></rect><path d="M7 4v3M12 4v3M17 4v3" stroke="#111" stroke-width="1.3" stroke-linecap="round"></path><path d="M3 10h18" stroke="#111" stroke-width="1.3"></path><path d="M7 20h10" stroke="#111" stroke-width="1.5" stroke-linecap="round"></path><path d="M12 17v3" stroke="#111" stroke-width="1.5" stroke-linecap="round"></path></svg>
+        </div>
+        <div>
+          <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;color:#111;letter-spacing:-0.2px">Full-page translation</h3>
+          <p style="font-size:14px;line-height:1.7;color:#6B7280">Catches scroll-loaded listings, pop-ups, and filter panels. No corner left untranslated.</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div style="padding:28px;border-radius:8px;background:#F3F4F6;display:flex;flex-direction:column;gap:20px;transition:transform 0.2s ease,box-shadow 0.2s ease" style-hover="transform:translateY(-5px);box-shadow:3px 3px 0 rgba(0,0,0,0.18)">
+        <div style="width:44px;height:44px;border-radius:8px;background:#E5E7EB;display:flex;align-items:center;justify-content:center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M7 12a5 5 0 1 0 0-1" stroke="#111" stroke-width="1.5" stroke-linecap="round"></path><path d="M17 12a5 5 0 1 0 0 1" stroke="#111" stroke-width="1.5" stroke-linecap="round"></path><path d="M10 9l-2 3 2 3M14 9l2 3-2 3" stroke="#111" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+        <div>
+          <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;color:#111;letter-spacing:-0.2px">Inline currency conversion</h3>
+          <p style="font-size:14px;line-height:1.7;color:#6B7280">Every price converts to your local currency right where it sits, using today's live exchange rates.</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div style="padding:28px;border-radius:8px;background:#F3F4F6;display:flex;flex-direction:column;gap:20px;transition:transform 0.2s ease,box-shadow 0.2s ease" style-hover="transform:translateY(-5px);box-shadow:3px 3px 0 rgba(0,0,0,0.18)">
+        <div style="width:44px;height:44px;border-radius:8px;background:#E5E7EB;display:flex;align-items:center;justify-content:center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 19V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z" stroke="#111" stroke-width="1.5"></path><path d="M8 9h8M8 12h5M8 15h3" stroke="#111" stroke-width="1.4" stroke-linecap="round"></path></svg>
+        </div>
+        <div>
+          <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;color:#111;letter-spacing:-0.2px">Luxury glossary</h3>
+          <p style="font-size:14px;line-height:1.7;color:#6B7280">Renders resale jargon like <strong style="color:#111;font-weight:700">N</strong> and <strong style="color:#111;font-weight:700">BNWT</strong> correctly—never as literal, confusing mistranslations.</p>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div style="padding:28px;border-radius:8px;background:#F3F4F6;display:flex;flex-direction:column;gap:20px;transition:transform 0.2s ease,box-shadow 0.2s ease" style-hover="transform:translateY(-5px);box-shadow:3px 3px 0 rgba(0,0,0,0.18)">
+        <div style="width:44px;height:44px;border-radius:8px;background:#E5E7EB;display:flex;align-items:center;justify-content:center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="9" width="20" height="6" rx="2" stroke="#111" stroke-width="1.5"></rect><path d="M5 9V7M8 9V7M11 9V7M14 9V7M17 9V7M20 9V7" stroke="#111" stroke-width="1.2" stroke-linecap="round"></path><path d="M5 15v2M8 15v2M11 15v2M14 15v2M17 15v2M20 15v2" stroke="#111" stroke-width="1.2" stroke-linecap="round"></path></svg>
+        </div>
+        <div>
+          <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;color:#111;letter-spacing:-0.2px">Size conversion to US</h3>
+          <p style="font-size:14px;line-height:1.7;color:#6B7280">Footwear and apparel sizing mapped automatically. Always labeled so you know exactly what you're getting.</p>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div style="padding:28px;border-radius:8px;background:#F3F4F6;display:flex;flex-direction:column;gap:20px;transition:transform 0.2s ease,box-shadow 0.2s ease" style-hover="transform:translateY(-5px);box-shadow:3px 3px 0 rgba(0,0,0,0.18)">
+        <div style="width:44px;height:44px;border-radius:8px;background:#E5E7EB;display:flex;align-items:center;justify-content:center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.5" stroke="#111" stroke-width="1.5"></circle><path d="M15.5 15.5L20 20" stroke="#111" stroke-width="1.6" stroke-linecap="round"></path><path d="M7.5 10.5h6M10.5 7.5v6" stroke="#111" stroke-width="1.4" stroke-linecap="round"></path></svg>
+        </div>
+        <div>
+          <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;color:#111;letter-spacing:-0.2px">Search in English</h3>
+          <p style="font-size:14px;line-height:1.7;color:#6B7280">Type in English; the extension translates your query into the site's language so you find exactly what you want.</p>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div style="padding:28px;border-radius:8px;background:#F3F4F6;display:flex;flex-direction:column;gap:20px;transition:transform 0.2s ease,box-shadow 0.2s ease" style-hover="transform:translateY(-5px);box-shadow:3px 3px 0 rgba(0,0,0,0.18)">
+        <div style="width:44px;height:44px;border-radius:8px;background:#E5E7EB;display:flex;align-items:center;justify-content:center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2.5l8.5 4.75v5c0 4.75-3.5 8.5-8.5 10-5-1.5-8.5-5.25-8.5-10v-5L12 2.5z" stroke="#111" stroke-width="1.5" stroke-linejoin="round"></path><path d="M8.5 12l2.5 2.5 5-5" stroke="#111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+        <div>
+          <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;color:#111;letter-spacing:-0.2px">100% Local Processing</h3>
+          <p style="font-size:14px;line-height:1.7;color:#6B7280">Translation runs entirely on your device. Only currency codes are ever sent out—never your content.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Divider -->
+<div style="height:1px;background:#F3F4F6"></div>
+
+<!-- ══════════ FOOTER CTA ══════════ -->
+<section id="privacy" style="padding:100px 32px 72px;background:#fff">
+  <div style="max-width:560px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center">
+
+    <!-- Thin vertical rule -->
+    <div style="width:1px;height:56px;background:#D1D5DB;margin-bottom:44px"></div>
+
+    <h2 style="font-size:60px;font-weight:900;letter-spacing:-2.2px;line-height:1.04;margin-bottom:16px;color:#111">Start shopping<br>without borders.</h2>
+    <p style="font-size:17px;color:#6B7280;margin-bottom:44px">Free, private, and ready in seconds.</p>
+
+    <a href="#" style="display: inline-flex; align-items: center; gap: 10px; padding: 16px 44px; border-radius: 100px; background: #111; color: #fff; font-size: 16px; font-weight: 700; margin-bottom: 14px; transition: background 0.15s" style-hover="background:#2D2D2D">
+      
+      Add to Chrome, it's Free!
+    </a>
+    <span style="font-size:12px;color:#9CA3AF;letter-spacing:0.4px;margin-bottom:52px">On-device&nbsp;&nbsp;·&nbsp;&nbsp;No tracking&nbsp;&nbsp;·&nbsp;&nbsp;Free forever</span>
+
+    <!-- Privacy card -->
+    <div style="width:100%;padding:24px 28px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:8px;text-align:left;margin-bottom:44px">
+      <p style="font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#9CA3AF;margin-bottom:10px">About your privacy</p>
+      <p style="font-size:13px;line-height:1.85;color:#9CA3AF">
+        Globuy uses Chrome's built-in on-device translation model. Page text is processed entirely within your browser—it never leaves your machine. Only currency codes (like USD, KRW, JPY) are sent to an exchange rate API to fetch the latest rate. Nothing you read, shop for, or type is sent anywhere.
+      </p>
+    </div>
+
+    <div style="display:flex;gap:24px;margin-bottom:16px">
+      <a href="#" style="font-size:13px;color:#9CA3AF;transition:color 0.15s" style-hover="color:#111">Privacy Policy</a>
+      <a href="#" style="font-size:13px;color:#9CA3AF;transition:color 0.15s" style-hover="color:#111">Terms</a>
+      <a href="#" style="font-size:13px;color:#9CA3AF;transition:color 0.15s" style-hover="color:#111">Contact</a>
+    </div>
+    <p style="font-size:12px;color:#D1D5DB">© 2025 Globuy. All rights reserved.</p>
+
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440, &quot;height&quot;: 900}}">
+class Component extends DCLogic {
+  state = { sliderPos: 50, dragging: false };
+
+  componentDidMount() {
+    this._onMove = (e) => {
+      if (!this.state.dragging) return;
+      const el = document.getElementById('bfslider');
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const pct = Math.max(6, Math.min(94, ((clientX - r.left) / r.width) * 100));
+      this.setState({ sliderPos: pct });
+    };
+    this._onUp = () => { if (this.state.dragging) this.setState({ dragging: false }); };
+    window.addEventListener('mousemove', this._onMove);
+    window.addEventListener('mouseup', this._onUp);
+    window.addEventListener('touchmove', this._onMove);
+    window.addEventListener('touchend', this._onUp);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('mousemove', this._onMove);
+    window.removeEventListener('mouseup', this._onUp);
+    window.removeEventListener('touchmove', this._onMove);
+    window.removeEventListener('touchend', this._onUp);
+  }
+
+  renderVals() {
+    const { sliderPos, dragging } = this.state;
+    return {
+      afterStyle: {
+        position: 'absolute',
+        inset: 0,
+        clipPath: `inset(0 ${(100 - sliderPos).toFixed(1)}% 0 0)`,
+      },
+      dividerStyle: {
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        left: `${sliderPos.toFixed(1)}%`,
+        transform: 'translateX(-50%)',
+        width: '48px',
+        zIndex: 10,
+        cursor: dragging ? 'grabbing' : 'ew-resize',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        userSelect: 'none',
+      },
+      startDrag: (e) => {
+        const el = document.getElementById('bfslider');
+        if (!el) return;
+        const r = el.getBoundingClientRect();
+        const pct = Math.max(6, Math.min(94, ((e.clientX - r.left) / r.width) * 100));
+        this.setState({ dragging: true, sliderPos: pct });
+      },
+      startDragTouch: (e) => {
+        const el = document.getElementById('bfslider');
+        if (!el) return;
+        const r = el.getBoundingClientRect();
+        const pct = Math.max(6, Math.min(94, ((e.touches[0].clientX - r.left) / r.width) * 100));
+        this.setState({ dragging: true, sliderPos: pct });
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>
