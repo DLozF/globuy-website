@@ -1,3 +1,5 @@
 .thumbnail
 .vercel
 node_modules
+*.zip
+temp-extract/
