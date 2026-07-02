@@ -8,6 +8,13 @@
 <meta property="og:title" content="GloBuy — Shop Asian Resale Without Borders">
 <meta property="og:description" content="Translate and convert prices across Mercari Japan, Naver, Taobao, and more. Free Chrome extension.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://globuy-landing.vercel.app/">
+<meta property="og:image" content="https://globuy-landing.vercel.app/screenshots/hero.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GloBuy — Shop Asian Resale Without Borders">
+<meta name="twitter:description" content="Translate and convert prices across Mercari Japan, Naver, Taobao, and more. Free Chrome extension.">
+<meta name="twitter:image" content="https://globuy-landing.vercel.app/screenshots/hero.png">
+<link rel="canonical" href="https://globuy-landing.vercel.app/">
 <link rel="icon" type="image/svg+xml" href="globuy-icon.svg">
 <script src="./support.js"></script>
 </head>
@@ -60,6 +67,10 @@
       height: 98px;
     }
 
+    /* Grid children default to min-width:auto, which lets the nowrap slot
+       text force the whole page wider than the viewport on small screens. */
+    .hero-layout > div { min-width: 0; }
+
     @media (max-width: 960px) {
       .hero-layout {
         grid-template-columns: 1fr;
@@ -77,23 +88,45 @@
       .slot-text {
         font-size: 48px !important;
         height: 60px !important;
+        letter-spacing: -2px !important;
       }
+    }
+
+    @media (max-width: 600px) {
+      .nav-inner { padding: 0 16px !important; }
+      .nav-links { gap: 14px !important; }
+      .nav-cta { padding: 8px 14px !important; }
+      .hero-layout { padding: 64px 20px 56px !important; gap: 44px !important; }
+      .slot-text {
+        font-size: 34px !important;
+        height: 44px !important;
+        letter-spacing: -1.2px !important;
+      }
+      #features { padding: 64px 20px !important; }
+      #features h2 { font-size: 34px !important; letter-spacing: -1px !important; }
+      #privacy { padding: 64px 20px 48px !important; }
+      #privacy h2 { font-size: 38px !important; letter-spacing: -1.3px !important; }
+      .mock-photo { width: 116px !important; height: 116px !important; }
+    }
+
+    @media (max-width: 420px) {
+      .nav-links a:not(.nav-cta) { display: none; }
     }
   </style>
 </helmet>
 
 <!-- ══════════ NAVBAR ══════════ -->
 <nav style="position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid #E5E7EB">
-  <div style="max-width:1280px;margin:0 auto;padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between">
+  <div class="nav-inner" style="max-width:1280px;margin:0 auto;padding:0 32px;height:60px;display:flex;align-items:center;justify-content:space-between">
 
     <div>
       <img src="globuy-logo.svg" height="32" alt="GloBuy" style="display:block;height:32px;width:auto">
     </div>
 
-    <div style="display:flex;align-items:center;gap:24px">
+    <div class="nav-links" style="display:flex;align-items:center;gap:24px">
       <a href="#features" style="font-size:14px;font-weight:500;color:#6B7280;transition:color 0.15s" style-hover="color:#111">Features</a>
       <a href="#privacy" style="font-size:14px;font-weight:500;color:#6B7280;transition:color 0.15s" style-hover="color:#111">Privacy</a>
-      <a href="#" style="display:inline-flex;align-items:center;gap:7px;padding:8px 18px;border-radius:5px;background:#111;color:#fff;font-size:13px;font-weight:600;letter-spacing:0.1px;transition:all 0.2s ease-in-out;box-shadow:0 8px 24px -4px rgba(0,0,0,0.15)" style-hover="background:#2D2D2D;transform:translateY(-2px);box-shadow:0 12px 28px -6px rgba(0,0,0,0.25)">
+      <a href="#" class="nav-cta" style="display:inline-flex;align-items:center;gap:7px;padding:8px 18px;border-radius:5px;background:#111;color:#fff;font-size:13px;font-weight:600;letter-spacing:0.1px;transition:all 0.2s ease-in-out;box-shadow:0 8px 24px -4px rgba(0,0,0,0.15)" style-hover="background:#2D2D2D;transform:translateY(-2px);box-shadow:0 12px 28px -6px rgba(0,0,0,0.25)">
         Add to Chrome
       </a>
     </div>
@@ -161,7 +194,7 @@
       <!-- Product layout -->
       <div style="padding:24px 22px;display:flex;gap:20px;align-items:flex-start">
         <!-- Product photo: Rick Owens DRKSHDW Ramones High-Top (ShopSimon CDN) -->
-        <div style="flex-shrink:0;width:168px;height:168px;border-radius:12px;overflow:hidden;background:#f0ede6 url('https://shop.simon.com/cdn/shop/files/82b56b85d2864bda9544ee0259a5f0b1_c228f292-77d7-4406-bb66-fc6c892b20e5.jpg?v=1725071294') center/cover no-repeat"></div>
+        <div class="mock-photo" style="flex-shrink:0;width:168px;height:168px;border-radius:12px;overflow:hidden;background:#f0ede6 url('https://shop.simon.com/cdn/shop/files/82b56b85d2864bda9544ee0259a5f0b1_c228f292-77d7-4406-bb66-fc6c892b20e5.jpg?v=1725071294') center/cover no-repeat"></div>
         <!-- Info column -->
         <div style="flex:1;min-width:0;padding-top:2px">
           <!-- Brand -->
