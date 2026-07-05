@@ -3,9 +3,9 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/(.*)",
       "has": [{ "type": "host", "value": "globuy-landing.vercel.app" }],
-      "destination": "https://getglobuy.app/:path*",
+      "destination": "https://getglobuy.app/$1",
       "permanent": true
     }
   ]
